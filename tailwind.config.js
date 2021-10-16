@@ -17,6 +17,11 @@ module.exports = {
         merri: ["Merriweather Sans", "sans-serif"],
         fred: ["Fredoka One", "sans-serif"],
       },
+      backgroundImage: {
+        splatter: "url('/src/img/splatter.png')",
+        brushed: "url('/src/img/brushed.jpg')",
+        brushed2: "url('/src/img/brushed2.jfif')",
+      },
     },
   },
   variants: {
