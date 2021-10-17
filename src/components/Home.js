@@ -7,8 +7,10 @@ const Home = () => {
   return (
     <div>
       <Header />
-      <LeftSection />
-      <RightSection />
+      <div className="md:flex md:py-2">
+        <LeftSection />
+        <RightSection />
+      </div>
     </div>
   );
 };

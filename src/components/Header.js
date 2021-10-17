@@ -11,10 +11,9 @@ const Header = () => {
                 <a href="#" className="flex items-center my-4 px-2">
                   <Logo />
                 </a>
-                <div className="hidden md:flex items-center space-x-1"></div>
               </div>
 
-              <div class="flex items-center space-x-3  ">
+              <div class="flex items-center space-x-3 ">
                 <a
                   href="#"
                   class="py-2 px-2 md:px-5 md:py-3 font-medium text-white bg-purple-bright rounded hover:bg-purple-moderate transition duration-300"

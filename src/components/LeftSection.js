@@ -1,16 +1,15 @@
 import React from "react";
-import Splatter from "../img/splatter.png";
 
 import Button from "./Button";
 
 const LeftSection = () => {
   return (
-    <div className="py-10 px-6">
+    <div className="py-10 px-6 md:flex-1">
       <h1 className="font-fred text-4xl py-6 px-4 bg-brushed bg-cover bg-center">
         Generate Realtime Polls Instantly !!
       </h1>
       <div className="px-2 py-6 mt-4 text-xl leading-10 ">
-        <ul className="list-none grid justify-items-start font-fred">
+        <ul className="list-none grid justify-items-start font-fred lg:pl-8">
           <li className="text-left">
             <i class="fas fa-paper-plane pr-2"></i> Track the polls in realtime
           </li>
