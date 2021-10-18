@@ -4,7 +4,7 @@ import Button from "./Button";
 
 const LeftSection = () => {
   return (
-    <div className="py-10 px-6 md:flex-1">
+    <div className="pt-10 pb-6 px-6 md:flex-1">
       <h1 className="font-fred text-4xl py-6 px-4 bg-brushed bg-cover bg-center">
         Generate Realtime Polls Instantly !!
       </h1>
