@@ -20,6 +20,12 @@ const Header = () => {
                 >
                   Sign In
                 </a>
+                <a
+                  href="#"
+                  class="hidden py-2 px-2 md:px-5 md:py-3 font-medium text-white bg-purple-bright rounded hover:bg-purple-moderate transition duration-300"
+                >
+                  Sign Out
+                </a>
               </div>
             </div>
           </div>
