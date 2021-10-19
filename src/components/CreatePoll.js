@@ -1,6 +1,10 @@
-import React from "react";
+import React, { useState } from "react";
+import { Fragment } from "react/cjs/react.production.min";
+import Button from "./Button";
+import { Toggle, ListItem, List, Page } from "tailwind-mobile/react";
 
 const CreatePoll = () => {
+  const [checked1, setChecked1] = useState(true);
   return (
     <div className="mt-8 ">
       <div className="px-16 mx-28 text-left">
@@ -49,14 +53,32 @@ const CreatePoll = () => {
           />{" "}
           <br />
           <div className="my-4 flex">
-            <button className="form-input flex-1">Add another option</button>
-            <button className="form-input flex-1">Generate Poll</button>
-            <div id="auto-timer flex-1">
-              <span>
-                Auto expire after a fixed time{" "}
-                <input type="checkbox" className="form-input" />
-              </span>
+            <div className="flex-1">
+              <Button
+                placeholder="Add option"
+                icon={
+                  <Fragment>
+                    <i class="fas fa-plus-circle"></i>
+                  </Fragment>
+                }
+              />
             </div>
+            {/* <button className="form-input flex-1">Add another option</button> */}
+            <div className="flex-1">
+              <Button
+                placeholder="Generate Poll"
+                icon={
+                  <Fragment>
+                    <i class="fas fa-rocket"></i>
+                  </Fragment>
+                }
+              />
+              {/* <button className="form-input flex-1">Generate Poll</button> */}
+            </div>
+
+            {/* -------------------------------------------------- */}
+
+            <div id="auto-timer flex-1"></div>
           </div>
         </form>
       </div>

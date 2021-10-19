@@ -1,4 +1,5 @@
 import React from "react";
+import { Fragment } from "react/cjs/react.production.min";
 
 import Button from "./Button";
 
@@ -24,7 +25,15 @@ const LeftSection = () => {
       </div>
 
       <div className="flex justify-center py-5 mb-4">
-        <Button placeholder={"Get Started"} dimension={[3, 14]} />
+        <Button
+          placeholder={"Get Started"}
+          icon={
+            <Fragment>
+              <i class="fab fa-google px-2 "></i>
+            </Fragment>
+          }
+          dimension={[3, 14]}
+        />
       </div>
     </div>
   );
