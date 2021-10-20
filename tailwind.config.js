@@ -22,10 +22,19 @@ module.exports = {
         brushed: "url('/src/img/brushed.jpg')",
         brushed2: "url('/src/img/brushed2.jfif')",
       },
+      borderColor: (theme) => ({
+        DEFAULT: theme("colors.gray.300", "currentColor"),
+        neon: "#ccff00",
+      }),
+      backgroundColor: (theme) => ({
+        neon: "#ccff00",
+      }),
     },
   },
   variants: {
-    extend: {},
+    extend: {
+      backgroundColor: ["checked"],
+    },
   },
   plugins: [
     require("@tailwindcss/forms")({

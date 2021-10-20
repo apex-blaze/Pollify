@@ -2,6 +2,7 @@ import React, { useState } from "react";
 import { Fragment } from "react/cjs/react.production.min";
 import Button from "./Button";
 import { Toggle, ListItem, List, Page } from "tailwind-mobile/react";
+import ToggleSwitch from "./ToggleSwitch";
 
 const CreatePoll = () => {
   const [checked1, setChecked1] = useState(true);
@@ -26,6 +27,25 @@ const CreatePoll = () => {
             spellCheck="false"
           />{" "}
           <br />
+          <div className="flex justify-center items-center mt-4">
+            <div className="flex-1">
+              <Button
+                placeholder="Add option"
+                icon={
+                  <Fragment>
+                    <i class="fas fa-plus-circle"></i>
+                  </Fragment>
+                }
+              />
+            </div>
+            {/* <button className="form-input flex-1">Add another option</button> */}
+            <div className=" ml-auto mr-4 flex">
+              <p className="flex-1 px-6 text-purple-bright">
+                Auto expire after a fixed time
+              </p>
+              <ToggleSwitch />
+            </div>
+          </div>
           <label
             htmlFor="option-1"
             className="text-purple-bright block text-lg pl-1 pb-2 pt-5"
@@ -52,18 +72,7 @@ const CreatePoll = () => {
             placeholder="Option 2"
           />{" "}
           <br />
-          <div className="my-4 flex">
-            <div className="flex-1">
-              <Button
-                placeholder="Add option"
-                icon={
-                  <Fragment>
-                    <i class="fas fa-plus-circle"></i>
-                  </Fragment>
-                }
-              />
-            </div>
-            {/* <button className="form-input flex-1">Add another option</button> */}
+          <div className="my-6 flex">
             <div className="flex-1">
               <Button
                 placeholder="Generate Poll"
@@ -77,8 +86,6 @@ const CreatePoll = () => {
             </div>
 
             {/* -------------------------------------------------- */}
-
-            <div id="auto-timer flex-1"></div>
           </div>
         </form>
       </div>
