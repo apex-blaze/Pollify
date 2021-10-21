@@ -6,7 +6,7 @@ import ToggleSwitch from "./ToggleSwitch";
 const CreatePoll = () => {
   return (
     <div className="mt-8 ">
-      <div className="px-16 mx-28 text-left">
+      <div className="mx-2 px-2 md:px-8 md:mx-8 lg:px-16 lg:mx-28 text-left">
         <h1 className="text-purple-bright text-5xl my-4">Create Poll</h1>
         <h3 className="text-purple-moderate ">
           Fill out below fields to create a poll
@@ -25,8 +25,11 @@ const CreatePoll = () => {
             spellCheck="false"
           />{" "}
           <br />
-          <div className="flex justify-center items-center mt-4">
-            <div className="flex-1">
+          <div
+            className="flex flex-col justify-start items-start  
+          md:flex-row md:justify-center md:items-center mt-4"
+          >
+            <div className="md:flex-1">
               <Button
                 placeholder="Add option"
                 icon={
@@ -37,11 +40,11 @@ const CreatePoll = () => {
               />
             </div>
             {/* <button className="form-input flex-1">Add another option</button> */}
-            <div className=" ml-auto mr-4 flex">
-              <p className="flex-1 px-6 text-purple-bright">
-                Auto expire after a fixed time
+            <div className=" md:ml-auto md:mr-4  md:flex">
+              <p className="py-5 md:flex-1 md:px-6 text-purple-bright text-lg">
+                Auto expire after a fixed time &nbsp;
+                <ToggleSwitch />
               </p>
-              <ToggleSwitch />
             </div>
           </div>
           <label
