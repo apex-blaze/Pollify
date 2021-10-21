@@ -1,11 +1,9 @@
-import React, { useState } from "react";
+import React from "react";
 import { Fragment } from "react/cjs/react.production.min";
 import Button from "./Button";
-import { Toggle, ListItem, List, Page } from "tailwind-mobile/react";
 import ToggleSwitch from "./ToggleSwitch";
 
 const CreatePoll = () => {
-  const [checked1, setChecked1] = useState(true);
   return (
     <div className="mt-8 ">
       <div className="px-16 mx-28 text-left">
@@ -82,10 +80,7 @@ const CreatePoll = () => {
                   </Fragment>
                 }
               />
-              {/* <button className="form-input flex-1">Generate Poll</button> */}
             </div>
-
-            {/* -------------------------------------------------- */}
           </div>
         </form>
       </div>

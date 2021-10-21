@@ -5,7 +5,7 @@ const RightSection = () => {
     <div className="px-12 py-6 md:flex md:flex-1 md:w-min md:justify-center md:p-4 ">
       <img
         src={HomeImg}
-        alt="Voting-vector-image"
+        alt="Voting-vector-art"
         className="md:m-auto md:max-w-lg md:w-full"
       />
     </div>
