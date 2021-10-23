@@ -1,19 +1,17 @@
 import React from "react";
+import CreatePoll from "./CreatePoll";
 import Footer from "./Footer";
 import Header from "./Header";
-import LeftSection from "./LeftSection";
-import RightSection from "./RightSection";
 
 const Home = () => {
   return (
-    <div className="lg:mx-20 md:flex md:flex-col md:min-h-screen">
-      <Header />
-      <div className="md:flex md:py-2 md:flex-grow-1">
-        <LeftSection />
-        <RightSection />
+    <>
+      <div className="lg:mx-20 flex flex-col min-h-screen">
+        <Header />
+        <CreatePoll />
+        <Footer />
       </div>
-      <Footer />
-    </div>
+    </>
   );
 };
 

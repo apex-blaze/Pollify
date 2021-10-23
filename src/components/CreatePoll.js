@@ -11,7 +11,7 @@ const CreatePoll = () => {
         <h3 className="text-purple-moderate ">
           Fill out below fields to create a poll
         </h3>
-        <form action="" className="">
+        <form action="">
           <label
             htmlFor="poll-qn"
             className="text-purple-bright block text-lg pl-1 pb-2 pt-5"
@@ -34,7 +34,7 @@ const CreatePoll = () => {
                 placeholder="Add option"
                 icon={
                   <Fragment>
-                    <i class="fas fa-plus-circle"></i>
+                    <i className="fas fa-plus-circle"></i>
                   </Fragment>
                 }
               />
@@ -79,7 +79,7 @@ const CreatePoll = () => {
                 placeholder="Generate Poll"
                 icon={
                   <Fragment>
-                    <i class="fas fa-rocket"></i>
+                    <i className="fas fa-rocket"></i>
                   </Fragment>
                 }
               />

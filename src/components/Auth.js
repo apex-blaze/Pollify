@@ -1,17 +1,60 @@
-import React from "react";
-import CreatePoll from "./CreatePoll";
+import React, { useEffect } from "react";
 import Footer from "./Footer";
 import Header from "./Header";
+import LeftSection from "./LeftSection";
+import RightSection from "./RightSection";
+import firebase from "firebase/compat/app";
+import "firebase/compat/auth";
+import { UserSession } from "../firebase/UserProvider";
 
-const Auth = () => {
+const Auth = (props) => {
+  const { user, loading } = UserSession();
+  const handleLogin = async () => {
+    let provider = new firebase.auth.GoogleAuthProvider();
+    firebase
+      .auth()
+      .signInWithPopup(provider)
+      .then((result) => {
+        let token = result.credential.accessToken;
+        let user = result.user;
+        if (props.location.state) {
+          if (!props.location.state.from) {
+            props.history.push("/auth");
+          } else {
+            props.history.push(`/${props.location.state.from}`);
+          }
+        } else {
+          props.history.push("/");
+        }
+      })
+      .catch((err) => {
+        let errorCode = err.code;
+        let errorMessage = err.message;
+        let email = err.email;
+        let credential = err.credential;
+      });
+  };
+
+  useEffect(() => {
+    if (user) {
+      if (props.location.state) {
+        if (!props.location.state.from) props.history.push("/");
+        else props.history.push(`/${props.location.state.from}`);
+      } else {
+        props.history.push("/");
+      }
+    }
+  }, [user]);
+
   return (
-    <>
-      <div className="lg:mx-20 flex flex-col min-h-screen">
-        <Header />
-        <CreatePoll />
-        <Footer />
+    <div className="lg:mx-20 md:flex md:flex-col md:min-h-screen">
+      <Header />
+      <div className="md:flex md:py-2 md:flex-grow-1">
+        <LeftSection handleLogin={handleLogin} />
+        <RightSection />
       </div>
-    </>
+      <Footer />
+    </div>
   );
 };
 
