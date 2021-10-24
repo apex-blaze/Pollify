@@ -1,4 +1,5 @@
 import React, { useEffect } from "react";
+import { withRouter } from "react-router-dom";
 import Logo from "./Logo";
 import { GoogleLogin } from "../firebase/googleLogin";
 import firebase from "firebase/compat/app";
@@ -6,8 +7,20 @@ import "firebase/auth";
 import { UserSession } from "../firebase/UserProvider";
 
 const Header = (props) => {
-  const handleLogin = props.handleLogin;
   const { user, loading } = UserSession();
+  const handleLogin = props.handleLogin;
+  const handleLogout = async () => {
+    firebase
+      .auth()
+      .signOut()
+      .then(() => {
+        props.history.push("/auth");
+        // console.log("Successfully logged out");
+      })
+      .catch((err) => {
+        console.log(err);
+      });
+  };
   return (
     <>
       <div className="px-4">
@@ -30,6 +43,7 @@ const Header = (props) => {
                   Sign In
                 </button>
                 <button
+                  onClick={handleLogout}
                   className={`${
                     user ? " " : "hidden"
                   } py-2 px-2 md:px-5 md:py-3 font-medium text-white bg-purple-bright rounded hover:bg-purple-moderate transition duration-300`}
@@ -45,4 +59,4 @@ const Header = (props) => {
   );
 };
 
-export default Header;
+export default withRouter(Header);
