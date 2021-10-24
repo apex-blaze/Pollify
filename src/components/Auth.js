@@ -48,7 +48,7 @@ const Auth = (props) => {
 
   return (
     <div className="lg:mx-20 md:flex md:flex-col md:min-h-screen">
-      <Header />
+      <Header handleLogin={handleLogin} />
       <div className="md:flex md:py-2 md:flex-grow-1">
         <LeftSection handleLogin={handleLogin} />
         <RightSection />
