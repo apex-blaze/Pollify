@@ -32,6 +32,19 @@ const CreatePoll = (props) => {
     setOptions([...arr]);
   };
 
+  const handleAdd = (e) => {
+    let option = {
+      index: options.length + 1,
+      title: "",
+      count: 0,
+    };
+    if (options.length === 5) {
+      console.log("Max 5 options allowed");
+    } else {
+      setOptions([...options, option]);
+    }
+  };
+
   return (
     <div className="mt-8 ">
       <div className="mx-2 px-2 md:px-8 md:mx-8 lg:px-16 lg:mx-28 text-left">
@@ -59,14 +72,21 @@ const CreatePoll = (props) => {
           md:flex-row md:justify-center md:items-center mt-4"
           >
             <div className="md:flex-1">
-              <Button
-                placeholder="Add option"
-                icon={
-                  <Fragment>
-                    <i className="fas fa-plus-circle"></i>
-                  </Fragment>
-                }
-              />
+              <div
+                id="add-trigger"
+                className="inline-block"
+                onClick={handleAdd}
+              >
+                <Button
+                  placeholder="Add option"
+                  icon={
+                    <Fragment>
+                      <i className="fas fa-plus-circle"></i>
+                    </Fragment>
+                  }
+                  onClick={handleAdd}
+                />
+              </div>
             </div>
             {/* <button className="form-input flex-1">Add another option</button> */}
             <div className=" md:ml-auto md:mr-4  md:flex">
