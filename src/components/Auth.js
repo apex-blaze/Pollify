@@ -8,6 +8,7 @@ import "firebase/compat/auth";
 import { UserSession } from "../firebase/UserProvider";
 
 const Auth = (props) => {
+  console.log(props);
   const { user, loading } = UserSession();
   const handleLogin = async () => {
     let provider = new firebase.auth.GoogleAuthProvider();
@@ -15,8 +16,8 @@ const Auth = (props) => {
       .auth()
       .signInWithPopup(provider)
       .then((result) => {
-        let token = result.credential.accessToken;
-        let user = result.user;
+        // let token = result.credential.accessToken;
+        // let user = result.user;
         if (props.location.state) {
           if (!props.location.state.from) {
             props.history.push("/auth");
@@ -28,10 +29,10 @@ const Auth = (props) => {
         }
       })
       .catch((err) => {
-        let errorCode = err.code;
-        let errorMessage = err.message;
-        let email = err.email;
-        let credential = err.credential;
+        // let errorCode = err.code;
+        // let errorMessage = err.message;
+        // let email = err.email;
+        // let credential = err.credential;
       });
   };
 

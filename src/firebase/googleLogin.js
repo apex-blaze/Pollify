@@ -7,14 +7,14 @@ export const GoogleLogin = () => {
     .auth()
     .signInWithPopup(provider)
     .then((result) => {
-      let token = result.credential.accessToken;
+      // let token = result.credential.accessToken;
       let user = result.user;
       return user;
     })
     .catch((error) => {
-      let errorCode = error.code;
-      let errorMessage = error.message;
-      let email = error.email;
-      let credential = error.credential;
+      // let errorCode = error.code;
+      // let errorMessage = error.message;
+      // let email = error.email;
+      // let credential = error.credential;
     });
 };

@@ -3,6 +3,7 @@ import { BrowserRouter, Route, Switch } from "react-router-dom";
 import Home from "./components/Home";
 import Auth from "./components/Auth";
 import UserProvider from "./firebase/UserProvider";
+import PrivateRoute from "./components/PrivateRoute";
 
 function App() {
   return (
@@ -10,7 +11,7 @@ function App() {
       <UserProvider>
         <BrowserRouter>
           <Switch>
-            <Route exact path="/" component={Home}></Route>
+            <PrivateRoute exact path="/" component={Home}></PrivateRoute>
             <Route exact path="/auth" component={Auth}></Route>
           </Switch>
         </BrowserRouter>

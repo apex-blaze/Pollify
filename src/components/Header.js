@@ -1,7 +1,6 @@
-import React, { useEffect } from "react";
+import React from "react";
 import { withRouter } from "react-router-dom";
 import Logo from "./Logo";
-import { GoogleLogin } from "../firebase/googleLogin";
 import firebase from "firebase/compat/app";
 import "firebase/auth";
 import { UserSession } from "../firebase/UserProvider";
