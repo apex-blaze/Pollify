@@ -1,9 +1,27 @@
-import React from "react";
+import React, { useState } from "react";
 import { Fragment } from "react/cjs/react.production.min";
 import Button from "./Button";
 import ToggleSwitch from "./ToggleSwitch";
 
-const CreatePoll = () => {
+const CreatePoll = (props) => {
+  const [title, setTitle] = useState("");
+  const [options, setOptions] = useState([
+    {
+      index: 1,
+      title: "",
+      count: 0,
+    },
+    {
+      index: 2,
+      title: "",
+      count: 0,
+    },
+  ]);
+
+  const handleTitle = (e) => {
+    setTitle(e.target.value);
+  };
+
   return (
     <div className="mt-8 ">
       <div className="mx-2 px-2 md:px-8 md:mx-8 lg:px-16 lg:mx-28 text-left">
@@ -23,6 +41,7 @@ const CreatePoll = () => {
             className="placeholder-purple-moderate form-input w-full rounded-lg p-5 border border-gray-400 resize-none text-xl"
             placeholder="What's your favourite colour?"
             spellCheck="false"
+            onChange={handleTitle}
           />{" "}
           <br />
           <div
@@ -47,7 +66,7 @@ const CreatePoll = () => {
               </p>
             </div>
           </div>
-          <label
+          {/* <label
             htmlFor="option-1"
             className="text-purple-bright block text-lg pl-1 pb-2 pt-5"
           >
@@ -72,7 +91,24 @@ const CreatePoll = () => {
             className="placeholder-purple-moderate form-input w-full rounded-lg p-5  focus:shadow-outline border border-gray-400 text-xl"
             placeholder="Option 2"
           />{" "}
-          <br />
+          <br /> */}
+          {options.map((option) => (
+            <div key={option.index}>
+              <label
+                htmlFor={`option-${option.index}`}
+                className="text-purple-bright block text-lg pl-1 pb-2 pt-5"
+              >
+                Option {option.index}
+              </label>{" "}
+              <input
+                type="text"
+                id={`option-${option.index}`}
+                className="placeholder-purple-moderate form-input w-full rounded-lg p-5 border border-gray-400 text-xl"
+                placeholder={`Option ${option.index}`}
+              />{" "}
+              <br />
+            </div>
+          ))}
           <div className="my-6 flex">
             <div className="flex-1">
               <Button
