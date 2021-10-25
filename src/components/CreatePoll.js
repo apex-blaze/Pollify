@@ -22,6 +22,16 @@ const CreatePoll = (props) => {
     setTitle(e.target.value);
   };
 
+  const handleChange = (index, e) => {
+    let arr = options;
+    arr.forEach((option) => {
+      if (option.index === index) {
+        option.title = e.target.value;
+      }
+    });
+    setOptions([...arr]);
+  };
+
   return (
     <div className="mt-8 ">
       <div className="mx-2 px-2 md:px-8 md:mx-8 lg:px-16 lg:mx-28 text-left">
@@ -105,6 +115,9 @@ const CreatePoll = (props) => {
                 id={`option-${option.index}`}
                 className="placeholder-purple-moderate form-input w-full rounded-lg p-5 border border-gray-400 text-xl"
                 placeholder={`Option ${option.index}`}
+                onChange={(value) => {
+                  handleChange(option.index, value);
+                }}
               />{" "}
               <br />
             </div>
