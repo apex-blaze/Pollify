@@ -8,7 +8,7 @@ import "firebase/compat/auth";
 import { UserSession } from "../firebase/UserProvider";
 
 const Auth = (props) => {
-  console.log(props);
+  // console.log(props);
   const { user, loading } = UserSession();
   const handleLogin = async () => {
     let provider = new firebase.auth.GoogleAuthProvider();
