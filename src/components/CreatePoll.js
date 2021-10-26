@@ -51,7 +51,7 @@ const CreatePoll = (props) => {
       return;
     }
 
-    let arr = JSON.parse(JSON.stringify(options));
+    let arr = options.map((option) => Object.assign({}, option));
     console.log(arr);
     let x = [];
     arr.forEach((option) => {
@@ -165,7 +165,7 @@ const CreatePoll = (props) => {
                       id={`option-${option.index}`}
                       className="placeholder-purple-moderate form-input w-full rounded-lg p-5 border border-gray-400 text-xl"
                       placeholder={`Option ${option.index}`}
-                      value={option.value}
+                      value={option.title}
                       onChange={(value) => handleChange(option.index, value)}
                     />
                     <i
