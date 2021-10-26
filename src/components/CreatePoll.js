@@ -5,7 +5,9 @@ import ToggleSwitch from "./ToggleSwitch";
 import { toast, ToastContainer } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 import shortid from "shortid";
+import { withRouter } from "react-router-dom";
 import { UserSession } from "../firebase/UserProvider";
+import { createPoll } from "../firebase/polls";
 
 const CreatePoll = (props) => {
   const { user } = UserSession();
@@ -254,4 +256,4 @@ const CreatePoll = (props) => {
   );
 };
 
-export default CreatePoll;
+export default withRouter(CreatePoll);
