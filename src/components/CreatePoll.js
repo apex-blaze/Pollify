@@ -2,6 +2,8 @@ import React, { useState } from "react";
 import { Fragment } from "react/cjs/react.production.min";
 import Button from "./Button";
 import ToggleSwitch from "./ToggleSwitch";
+import { toast, ToastContainer } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
 
 const CreatePoll = (props) => {
   const [title, setTitle] = useState("");
@@ -39,7 +41,7 @@ const CreatePoll = (props) => {
       count: 0,
     };
     if (options.length === 5) {
-      console.log("Max 5 options allowed");
+      toast.warning("Maximum 5 options are allowed!!");
     } else {
       setOptions([...options, option]);
     }
@@ -47,7 +49,7 @@ const CreatePoll = (props) => {
 
   const handleDelete = (index) => {
     if (options.length === 2) {
-      console.log("Minimum 2 options are required");
+      toast.warning("Minimum 2 options are required!!");
       return;
     }
 
@@ -74,6 +76,7 @@ const CreatePoll = (props) => {
 
   return (
     <div className="mt-8 ">
+      <ToastContainer newestOnTop autoClose={2000} />
       <div className="mx-2 px-2 md:px-8 md:mx-8 lg:px-16 lg:mx-28 text-left">
         <h1 className="text-purple-bright text-5xl my-4">Create Poll</h1>
         <h3 className="text-purple-moderate ">
