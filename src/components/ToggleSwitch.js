@@ -3,12 +3,9 @@ import "../styles.css";
 import { DateTimePicker, MuiPickersUtilsProvider } from "@material-ui/pickers";
 import DateFnsUtils from "@date-io/date-fns";
 
-const ToggleSwitch = () => {
-  const [check, setCheck] = useState(false);
-  const [selectedDate, setSelectedDate] = useState(new Date());
-
+const ToggleSwitch = (props) => {
   function onChangeSwitch(e) {
-    setCheck(!check);
+    props.setCheck(!props.check);
   }
   return (
     <MuiPickersUtilsProvider utils={DateFnsUtils}>
@@ -17,11 +14,11 @@ const ToggleSwitch = () => {
         <span className="slider round"></span>
       </label>
       <div className="px-4">
-        {check ? (
+        {props.check ? (
           <DateTimePicker
-            value={selectedDate}
+            value={props.selectedDate}
             disablePast
-            onChange={setSelectedDate}
+            onChange={props.setSelectedDate}
           />
         ) : null}
       </div>

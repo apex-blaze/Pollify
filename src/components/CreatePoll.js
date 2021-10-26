@@ -4,8 +4,11 @@ import Button from "./Button";
 import ToggleSwitch from "./ToggleSwitch";
 import { toast, ToastContainer } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
+import shortid from "shortid";
+import { UserSession } from "../firebase/UserProvider";
 
 const CreatePoll = (props) => {
+  const { user } = UserSession();
   const [title, setTitle] = useState("");
   const [options, setOptions] = useState([
     {
@@ -19,6 +22,8 @@ const CreatePoll = (props) => {
       count: 0,
     },
   ]);
+  const [check, setCheck] = useState(false);
+  const [selectedDate, setSelectedDate] = useState(new Date());
 
   const handleTitle = (e) => {
     setTitle(e.target.value);
@@ -74,6 +79,45 @@ const CreatePoll = (props) => {
     setOptions(arr);
   };
 
+  const handleSubmit = (e) => {
+    if (options.length < 2) {
+      toast.error("Minimum 2 options are required!!");
+    } else {
+      let flag = 0;
+      for (let i = 0; i < options.length; i++) {
+        if (options[i].title === "") {
+          toast.error("Option can't be empty!!");
+          flag = 1;
+          break;
+        }
+      }
+      if (flag === 0) {
+        if (title === "") {
+          toast.error("Poll Question can't be empty!!");
+          flag = 1;
+        } else {
+          let poll = {};
+          if (check) {
+            poll.expire = true;
+            poll.date = selectedDate;
+          } else {
+            poll.expire = false;
+          }
+          poll.id = shortid.generate();
+          poll.title = title;
+          poll.creator = user.displayName;
+          poll.votes = {};
+          poll.optins = options;
+          createPoll(poll);
+          toast.success("Poll Generated Successfully!!");
+          setTimeout(() => {
+            props.history.push(`/${poll.id}`);
+          }, 2000);
+        }
+      }
+    }
+  };
+
   return (
     <div className="mt-8 ">
       <ToastContainer newestOnTop autoClose={2000} />
@@ -122,7 +166,12 @@ const CreatePoll = (props) => {
             <div className=" md:ml-auto md:mr-4  md:flex">
               <p className="py-5 md:flex-1 md:px-6 text-purple-bright text-lg">
                 Auto expire after a fixed time &nbsp;
-                <ToggleSwitch />
+                <ToggleSwitch
+                  check={check}
+                  setCheck={setCheck}
+                  selectedDate={selectedDate}
+                  setSelectedDate={setSelectedDate}
+                />
               </p>
             </div>
           </div>
@@ -183,14 +232,20 @@ const CreatePoll = (props) => {
               ))}
           <div className="my-6 flex">
             <div className="flex-1">
-              <Button
-                placeholder="Generate Poll"
-                icon={
-                  <Fragment>
-                    <i className="fas fa-rocket"></i>
-                  </Fragment>
-                }
-              />
+              <div
+                id="add-trigger"
+                className="inline-block"
+                onClick={handleSubmit}
+              >
+                <Button
+                  placeholder="Generate Poll"
+                  icon={
+                    <Fragment>
+                      <i className="fas fa-rocket"></i>
+                    </Fragment>
+                  }
+                />
+              </div>
             </div>
           </div>
         </form>
