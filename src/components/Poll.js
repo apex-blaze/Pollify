@@ -4,6 +4,7 @@ import Footer from "./Footer";
 import { ToastContainer, toast } from "react-toastify";
 import { UserSession } from "../firebase/UserProvider";
 import { firestore } from "../firebase/config";
+import Loader from "../img/Preloader.gif";
 
 const Poll = (props) => {
   const id = props.match.params.id;

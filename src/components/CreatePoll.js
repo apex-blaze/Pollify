@@ -109,7 +109,7 @@ const CreatePoll = (props) => {
           poll.title = title;
           poll.creator = user.displayName;
           poll.votes = {};
-          poll.optins = options;
+          poll.options = options;
           createPoll(poll);
           toast.success("Poll Generated Successfully!!");
           setTimeout(() => {
