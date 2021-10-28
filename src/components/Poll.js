@@ -64,21 +64,28 @@ const Poll = (props) => {
       <Header />
       <div>
         <ToastContainer newestOnTop autoClose={2000} />
-        <div className="flex">
-          {expiry ? (
-            <h2>This poll is no longer accepting responses ❌</h2>
-          ) : (
-            <h2>Select an Option 👇</h2>
-          )}
-          {expiry
-            ? poll.options.map((option) => {
-                if (option.index != index) return <div>{option.title}</div>;
-                else return <div>{option.title}</div>;
-              })
-            : poll.options.map((option) => {
-                if (option.index != index) return <div>{option.title}</div>;
-                else return <div>{option.title}</div>;
-              })}
+        <div className="flex-col">
+          <div className="my-7 text-4xl font-fred">
+            <h1>{poll.title}</h1>
+          </div>
+          <div className="mt-5 mb-2 text-xl">
+            {expiry ? (
+              <h2>This poll is no longer accepting responses ❌</h2>
+            ) : (
+              <h2>Select an Option 👇</h2>
+            )}
+          </div>
+          <div className="text-xl">
+            {expiry
+              ? poll.options.map((option) => {
+                  if (option.index != index) return <div>{option.title}</div>;
+                  else return <div>{option.title}</div>;
+                })
+              : poll.options.map((option) => {
+                  if (option.index != index) return <div>{option.title}</div>;
+                  else return <div>{option.title}</div>;
+                })}
+          </div>
         </div>
       </div>
       <Footer />
