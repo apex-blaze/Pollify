@@ -4,6 +4,7 @@ import Home from "./components/Home";
 import Auth from "./components/Auth";
 import UserProvider from "./firebase/UserProvider";
 import PrivateRoute from "./components/PrivateRoute";
+import Poll from "./components/Poll";
 
 function App() {
   return (
@@ -13,6 +14,7 @@ function App() {
           <Switch>
             <PrivateRoute exact path="/" component={Home}></PrivateRoute>
             <Route exact path="/auth" component={Auth}></Route>
+            <PrivateRoute exact path="/:id" component={Poll} />
           </Switch>
         </BrowserRouter>
       </UserProvider>
