@@ -99,6 +99,7 @@ const Poll = (props) => {
                   if (option.index != index)
                     return (
                       <LiveOption
+                        key={option.index}
                         index={index}
                         setIndex={setIndex}
                         idx={option.index}
@@ -108,6 +109,7 @@ const Poll = (props) => {
                   else
                     return (
                       <LiveOption
+                        key={option.index}
                         index={index}
                         setIndex={setIndex}
                         idx={option.index}
@@ -119,6 +121,7 @@ const Poll = (props) => {
                   if (option.index != index)
                     return (
                       <LiveOption
+                        key={option.index}
                         index={index}
                         setIndex={setIndex}
                         idx={option.index}
@@ -128,6 +131,7 @@ const Poll = (props) => {
                   else
                     return (
                       <LiveOption
+                        key={option.index}
                         index={index}
                         setIndex={setIndex}
                         idx={option.index}

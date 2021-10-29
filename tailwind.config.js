@@ -29,6 +29,9 @@ module.exports = {
       backgroundColor: (theme) => ({
         neon: "#ccff00",
       }),
+      boxShadow: {
+        sam: "0 7px 14px 0 rgba(74, 217, 127, 0.2)",
+      },
     },
   },
   variants: {
