@@ -82,11 +82,11 @@ const Poll = (props) => {
       <Header />
       <div>
         <ToastContainer newestOnTop autoClose={2000} />
-        <div className="flex-col lg:mx-48">
+        <div className="flex-col mx-6 md:mx-24  lg:mx-48">
           <div className="my-7 text-4xl font-fred">
             <h1>{poll.title}</h1>
           </div>
-          <div className="mt-5 mb-2 text-xl">
+          <div className="mt-5 mb-6 text-xl">
             {expiry ? (
               <h2>This poll is no longer accepting responses ❌</h2>
             ) : (
