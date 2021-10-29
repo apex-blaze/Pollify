@@ -5,6 +5,8 @@ import { ToastContainer, toast } from "react-toastify";
 import { UserSession } from "../firebase/UserProvider";
 import { firestore } from "../firebase/config";
 import Loader from "../img/Preloader.gif";
+import "../styles.css";
+import LiveOption from "./LiveOption";
 
 const Poll = (props) => {
   const id = props.match.params.id;
@@ -34,6 +36,7 @@ const Poll = (props) => {
           y.push(option.count);
         });
         if (document.data().votes && document.data().votes[uid]) {
+          console.log(document.data().votes);
           setIndex(document.data().votes[uid]);
         }
         setLabel(x);
@@ -64,7 +67,7 @@ const Poll = (props) => {
       <Header />
       <div>
         <ToastContainer newestOnTop autoClose={2000} />
-        <div className="flex-col">
+        <div className="flex-col mx-28">
           <div className="my-7 text-4xl font-fred">
             <h1>{poll.title}</h1>
           </div>
@@ -72,18 +75,20 @@ const Poll = (props) => {
             {expiry ? (
               <h2>This poll is no longer accepting responses ❌</h2>
             ) : (
-              <h2>Select an Option 👇</h2>
+              <h2 className="font-fred">Select an Option 👇</h2>
             )}
           </div>
-          <div className="text-xl">
+          <div className="flex flex-col">
             {expiry
               ? poll.options.map((option) => {
-                  if (option.index != index) return <div>{option.title}</div>;
-                  else return <div>{option.title}</div>;
+                  if (option.index != index)
+                    return <LiveOption title={option.title} />;
+                  else return <LiveOption title={option.title} />;
                 })
               : poll.options.map((option) => {
-                  if (option.index != index) return <div>{option.title}</div>;
-                  else return <div>{option.title}</div>;
+                  if (option.index != index)
+                    return <LiveOption title={option.title} />;
+                  else return <LiveOption title={option.title} />;
                 })}
           </div>
         </div>

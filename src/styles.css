@@ -60,3 +60,10 @@ input:checked + .slider:before {
 .slider.round:before {
   border-radius: 50%;
 }
+
+.poll-live {
+  @apply py-5 hover:shadow-2xl px-6 border-2 border-gray-200 rounded-md shadow-xl relative transition-all duration-500 bg-white;
+}
+
+.poll-live-selected {
+}
