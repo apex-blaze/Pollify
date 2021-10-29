@@ -7,6 +7,7 @@ import { firestore } from "../firebase/config";
 import Loader from "../img/Preloader.gif";
 import "../styles.css";
 import LiveOption from "./LiveOption";
+import { updatePoll } from "../firebase/polls";
 
 const Poll = (props) => {
   const id = props.match.params.id;
@@ -18,6 +19,20 @@ const Poll = (props) => {
   const [modal, setModal] = useState(false);
   const [label, setLabel] = useState([]);
   const [pollData, setPollData] = useState([]);
+
+  // const handleClick = (index) => {
+  //   setIndex(index);
+  //   // let x = poll;
+  //   // if (!x.votes[uid]) {
+  //   //   x.options.forEach((option) => {
+  //   //     if (option.index == index) option.count++;
+  //   //   });
+  //   //   x.votes[uid] = index;
+  //   // updatePoll(x);
+  //   // } else {
+  //   //   console.log("You have already voted");
+  //   // }
+  // };
 
   useEffect(() => {
     const docRef = firestore.doc(`/polls/${id}`);
@@ -67,7 +82,7 @@ const Poll = (props) => {
       <Header />
       <div>
         <ToastContainer newestOnTop autoClose={2000} />
-        <div className="flex-col mx-28">
+        <div className="flex-col lg:mx-48">
           <div className="my-7 text-4xl font-fred">
             <h1>{poll.title}</h1>
           </div>
@@ -78,17 +93,47 @@ const Poll = (props) => {
               <h2 className="font-fred">Select an Option 👇</h2>
             )}
           </div>
-          <div className="flex flex-col">
+          <div className="flex flex-col items-center justify-center flex-wrap">
             {expiry
               ? poll.options.map((option) => {
                   if (option.index != index)
-                    return <LiveOption title={option.title} />;
-                  else return <LiveOption title={option.title} />;
+                    return (
+                      <LiveOption
+                        index={index}
+                        setIndex={setIndex}
+                        idx={option.index}
+                        title={option.title}
+                      />
+                    );
+                  else
+                    return (
+                      <LiveOption
+                        index={index}
+                        setIndex={setIndex}
+                        idx={option.index}
+                        title={option.title}
+                      />
+                    );
                 })
               : poll.options.map((option) => {
                   if (option.index != index)
-                    return <LiveOption title={option.title} />;
-                  else return <LiveOption title={option.title} />;
+                    return (
+                      <LiveOption
+                        index={index}
+                        setIndex={setIndex}
+                        idx={option.index}
+                        title={option.title}
+                      />
+                    );
+                  else
+                    return (
+                      <LiveOption
+                        index={index}
+                        setIndex={setIndex}
+                        idx={option.index}
+                        title={option.title}
+                      />
+                    );
                 })}
           </div>
         </div>
