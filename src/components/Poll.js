@@ -33,6 +33,9 @@ const Poll = (props) => {
   //   //   console.log("You have already voted");
   //   // }
   // };
+  const handleSubmit = () => {
+    console.log("huu");
+  };
 
   useEffect(() => {
     const docRef = firestore.doc(`/polls/${id}`);
@@ -64,16 +67,7 @@ const Poll = (props) => {
 
   if (!poll)
     return (
-      <div
-        style={{
-          width: "100%",
-          display: "flex",
-          height: "100vh",
-          alignItems: "center",
-          justifyContent: "center",
-          zIndex: "23444898429",
-        }}
-      >
+      <div className="w-full flex h-screen items-center justify-center z-50">
         <img src={Loader} />
       </div>
     );
@@ -139,6 +133,20 @@ const Poll = (props) => {
                       />
                     );
                 })}
+          </div>
+          <div className="flex items-center justify-between my-4 flex-col  md:flex-row">
+            <button
+              className="focus:outline-none py-4 font-semibold focus:shadow text-xl w-full mb-8 md:mb-0 md:w-auto bg-purple-bright text-white px-16 transition-all duration-300 shadow-lg hover:shadow-xl to-purple-600 rounded-lg"
+              onClick={handleSubmit}
+            >
+              Submit vote
+            </button>
+            <a href="#" className="flex items-center text-gray-500 mr-2">
+              <p className="text-lg mr-2  font-medium tracking-wide">
+                View Results
+              </p>
+              <i className="fas fa-angle-right"></i>
+            </a>
           </div>
         </div>
       </div>
