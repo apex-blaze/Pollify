@@ -66,6 +66,7 @@ const Poll = (props) => {
         props.history.push("/not_found");
       }
     });
+    return () => unsubscribe();
   }, []);
 
   if (!poll)
