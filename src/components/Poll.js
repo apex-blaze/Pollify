@@ -1,7 +1,9 @@
 import React, { useState, useEffect } from "react";
 import Header from "./Header";
 import Footer from "./Footer";
+import { Link } from "react-router-dom";
 import { ToastContainer, toast } from "react-toastify";
+import "firebase/compat/auth";
 import { UserSession } from "../firebase/UserProvider";
 import { firestore } from "../firebase/config";
 import Loader from "../img/Preloader.gif";
@@ -12,7 +14,7 @@ import { updatePoll } from "../firebase/polls";
 const Poll = (props) => {
   const id = props.match.params.id;
   const { user } = UserSession();
-  const uid = user.id;
+  const uid = user.uid;
   const [expiry, setExpiry] = useState(false);
   const [poll, setPoll] = useState(null);
   const [index, setIndex] = useState(-1);
@@ -20,21 +22,22 @@ const Poll = (props) => {
   const [label, setLabel] = useState([]);
   const [pollData, setPollData] = useState([]);
 
-  // const handleClick = (index) => {
-  //   setIndex(index);
-  //   // let x = poll;
-  //   // if (!x.votes[uid]) {
-  //   //   x.options.forEach((option) => {
-  //   //     if (option.index == index) option.count++;
-  //   //   });
-  //   //   x.votes[uid] = index;
-  //   // updatePoll(x);
-  //   // } else {
-  //   //   console.log("You have already voted");
-  //   // }
-  // };
   const handleSubmit = () => {
-    console.log("huu");
+    let x = poll;
+    // console.log(user);
+    if (!x.votes[uid]) {
+      x.options.forEach((option) => {
+        if (option.index === index) option.count++;
+      });
+      x.votes[uid] = index;
+      updatePoll(x);
+      toast.success("Vote submitted!!");
+      setTimeout(() => {
+        props.history.push(`/results/${poll.id}`);
+      }, 2000);
+    } else {
+      toast.error("You have already voted!!");
+    }
   };
 
   useEffect(() => {
@@ -42,7 +45,7 @@ const Poll = (props) => {
     const unsubscribe = docRef.onSnapshot((document) => {
       if (document.exists) {
         setPoll(document.data());
-        console.log(poll);
+        // console.log(poll);
         let x = [],
           y = [];
         if (document.data().expire) {
@@ -54,7 +57,7 @@ const Poll = (props) => {
           y.push(option.count);
         });
         if (document.data().votes && document.data().votes[uid]) {
-          console.log(document.data().votes);
+          // console.log(document.data().votes);
           setIndex(document.data().votes[uid]);
         }
         setLabel(x);
@@ -141,12 +144,15 @@ const Poll = (props) => {
             >
               Submit vote
             </button>
-            <a href="#" className="flex items-center text-gray-500 mr-2">
+            <Link
+              to={`/results/${id}`}
+              className="flex items-center text-gray-500 mr-2"
+            >
               <p className="text-lg mr-2  font-medium tracking-wide">
                 View Results
               </p>
               <i className="fas fa-angle-right"></i>
-            </a>
+            </Link>
           </div>
         </div>
       </div>
