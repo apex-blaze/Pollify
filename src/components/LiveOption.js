@@ -7,7 +7,7 @@ const LiveOption = (props) => {
   };
   return (
     <div
-      className={` py-5 hover:shadow-2xl px-6 border-2 border-gray-200 rounded-md shadow-xl relative transition-all duration-500 bg-white w-full mb-6 ${
+      className={` py-5 hover:shadow-2xl px-6 border-2 border-gray-200 rounded-md shadow-xl relative transition-all duration-500 bg-white w-full mb-6 cursor-pointer ${
         props.idx === props.index
           ? `shadow-sam border-purple-bright ml-3 -mr-3`
           : ``
