@@ -6,6 +6,7 @@ import { firestore } from "../firebase/config";
 import "firebase/compat/auth";
 import LivePoll from "./LivePoll";
 import SocialIcon from "./SocialIcon";
+import SocialBtn from "./SocialBtn";
 
 const Results = (props) => {
   const id = props.match.params.id;
@@ -71,12 +72,12 @@ const Results = (props) => {
               </div>
             </div>
 
-            <div className="flex flex-row w-full md:w-1/3 fixed bottom-0 left-0 md:static md:ml-16 rounded-md self-start">
+            <div className="flex flex-col w-full md:w-1/3 fixed bottom-0 left-0 md:static md:ml-16 rounded-md self-start mr-6">
               <p className="bg-blue-200 text-blue-700 mt-5 md:mb-5 md:mt-0 text-sm lg:text-base text-center py-2 rounded hidden px-4 md:block">
                 {"You voted "} <span className="font-semibold">{"xyz"}</span>
                 {" on this poll"}
               </p>
-              <div className="w-full bg-white flex flex-col-reverse md:flex-col border-t border-gray-300 md:border-t-0 rounded-md self-start px-5 py-6">
+              <div className="w-full bg-purple-light flex flex-col-reverse md:flex-col border-t border-gray-300 md:border-t-0 rounded-md self-start px-5 py-6">
                 <p className="bg-blue-200 text-blue-700 mt-5 md:mb-5 md:mt-0 text-sm lg:text-base text-center py-2 rounded md:hidden">
                   {"You voted "} <span className="font-semibold">{"xyz"}</span>
                   {" on this poll"}
@@ -84,14 +85,22 @@ const Results = (props) => {
                 <div className="flex items-end justify-between">
                   <div>
                     <p className="font-semibold text-gray-600 text-sm lg:text-base">{`Total Votes`}</p>
-                    <h3 className="font-bold text-gray-900 text-4xl">{`xyz votes`}</h3>
+                    <h3 className="font-bold text-gray-900 text-4xl">{`${totalVotes}`}</h3>
                   </div>
                   <div className="flex md:hidden">
-                    <div className="flex hover:bg-blue-500 transition-all duration-150 mr-3 rounded-md px-2 text-white items-center -ml-2 w-full self-center py-1 bg-blue-400 "></div>
                     <SocialIcon
                       icon={
                         <>
-                          <i className="fab fa-twitter-square"></i>
+                          <i className="fas fa-qrcode"></i>
+                        </>
+                      }
+                      color={"blue-400"}
+                    />
+
+                    <SocialIcon
+                      icon={
+                        <>
+                          <i class="fab fa-twitter"></i>
                         </>
                       }
                       color={"twitterBlue"}
@@ -99,7 +108,7 @@ const Results = (props) => {
                     <SocialIcon
                       icon={
                         <>
-                          <i class="fab fa-whatsapp-square"></i>
+                          <i class="fab fa-whatsapp"></i>
                         </>
                       }
                       color={"whatsappGreen"}
@@ -107,12 +116,54 @@ const Results = (props) => {
                     <SocialIcon
                       icon={
                         <>
-                          <i class="fab fa-facebook-square"></i>
+                          <i class="fab fa-facebook"></i>
                         </>
                       }
                       color={"facebookBlue"}
                     />
                   </div>
+                </div>
+                <div className="mt-5 md:block hidden text-left">
+                  <p className="font-semibold mb-2 text-gray-600 text-sm lg:text-base">
+                    Share
+                  </p>
+                  <div className="py-3">
+                    <div className="inline-flex cursor-pointer items-center hover:bg-blue-500 transition-all duration-150 px-2 py-2 bg-blue-400 text-white rounded-md">
+                      <div className="mr-2">
+                        <i class="fas fa-qrcode"></i>
+                      </div>
+                      <button className="focus:outline-none pr-3">
+                        Share QR Code
+                      </button>
+                    </div>
+                  </div>
+                  <SocialBtn
+                    icon={
+                      <>
+                        <i class="fab fa-twitter"></i>
+                      </>
+                    }
+                    color={"twitterBlue"}
+                    platform="twitter"
+                  />
+                  <SocialBtn
+                    icon={
+                      <>
+                        <i class="fab fa-whatsapp"></i>
+                      </>
+                    }
+                    color={"whatsappGreen"}
+                    platform="whatsapp"
+                  />
+                  <SocialBtn
+                    icon={
+                      <>
+                        <i class="fab fa-facebook"></i>
+                      </>
+                    }
+                    color={"facebookBlue"}
+                    platform="facebook"
+                  />
                 </div>
               </div>
             </div>
