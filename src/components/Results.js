@@ -15,8 +15,10 @@ const Results = (props) => {
   const [expiry, setExpiry] = useState(false);
   const [poll, setPoll] = useState(null);
   const [label, setLabel] = useState([]);
+  const uid = user.uid;
   const [pollData, setPollData] = useState([]);
   const [totalVotes, setTotalVotes] = useState(0);
+  const [currentVote, setCurrentVote] = useState(null);
   useEffect(() => {
     // console.log(props);
     const docRef = firestore.doc(`/polls/${id}`);
@@ -39,6 +41,11 @@ const Results = (props) => {
         setTotalVotes(total);
         setLabel(x);
         setPollData(y);
+        if (document.data().votes && document.data().votes[uid]) {
+          let currIndex = document.data().votes[uid] - 1;
+          let currLabel = label[currIndex];
+          setCurrentVote(currLabel);
+        }
       } else {
         props.history.push("/not_found");
       }
@@ -74,12 +81,14 @@ const Results = (props) => {
 
             <div className="flex flex-col w-full md:w-1/3 fixed bottom-0 left-0 md:static md:ml-16 rounded-md self-start mr-6">
               <p className="bg-blue-200 text-blue-700 mt-5 md:mb-5 md:mt-0 text-sm lg:text-base text-center py-2 rounded hidden px-4 md:block">
-                {"You voted "} <span className="font-semibold">{"xyz"}</span>
+                {"You voted "}{" "}
+                <span className="font-semibold">{currentVote}</span>
                 {" on this poll"}
               </p>
               <div className="w-full bg-purple-light flex flex-col-reverse md:flex-col border-t border-gray-300 md:border-t-0 rounded-md self-start px-5 py-6">
                 <p className="bg-blue-200 text-blue-700 mt-5 md:mb-5 md:mt-0 text-sm lg:text-base text-center py-2 rounded md:hidden">
-                  {"You voted "} <span className="font-semibold">{"xyz"}</span>
+                  {"You voted "}{" "}
+                  <span className="font-semibold">{currentVote}</span>
                   {" on this poll"}
                 </p>
                 <div className="flex items-end justify-between">
@@ -100,7 +109,7 @@ const Results = (props) => {
                     <SocialIcon
                       icon={
                         <>
-                          <i class="fab fa-twitter"></i>
+                          <i className="fab fa-twitter"></i>
                         </>
                       }
                       color={"twitterBlue"}
