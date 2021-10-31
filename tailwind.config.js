@@ -12,6 +12,9 @@ module.exports = {
           mid: "#D62AD0",
           light: "#F0D9FF",
         },
+        twitterBlue: "#55ACEE",
+        whatsappGreen: "#25D366",
+        facebookBlue: "#4267B2",
       },
       fontFamily: {
         merri: ["Merriweather Sans", "sans-serif"],
