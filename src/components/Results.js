@@ -42,8 +42,8 @@ const Results = (props) => {
         setLabel(x);
         setPollData(y);
         if (document.data().votes && document.data().votes[uid]) {
-          const currLabel = label[document.data().votes[uid] - 1];
-          setCurrentVote(currLabel);
+          // const currLabel = label[document.data().votes[uid] - 1];
+          setCurrentVote(x[document.data().votes[uid] - 1]);
           // console.log(currentVote);
         }
       } else {
