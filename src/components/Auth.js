@@ -6,6 +6,7 @@ import RightSection from "./RightSection";
 import firebase from "firebase/compat/app";
 import "firebase/compat/auth";
 import { UserSession } from "../firebase/UserProvider";
+import Loader from "../img/Preloader.gif";
 
 const Auth = (props) => {
   // console.log(props);
@@ -48,14 +49,22 @@ const Auth = (props) => {
   }, [user]);
 
   return (
-    <div className="lg:mx-20 md:flex md:flex-col md:min-h-screen">
-      <Header handleLogin={handleLogin} />
-      <div className="md:flex md:py-2 md:flex-grow-1">
-        <LeftSection handleLogin={handleLogin} />
-        <RightSection />
-      </div>
-      <Footer />
-    </div>
+    <>
+      {loading ? (
+        <div className="w-full flex h-screen items-center justify-center z-50">
+          <img src={Loader} />
+        </div>
+      ) : (
+        <div className="lg:mx-20 md:flex md:flex-col md:min-h-screen">
+          <Header handleLogin={handleLogin} />
+          <div className="md:flex md:py-2 md:flex-grow-1">
+            <LeftSection handleLogin={handleLogin} />
+            <RightSection />
+          </div>
+          <Footer />
+        </div>
+      )}
+    </>
   );
 };
 
