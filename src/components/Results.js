@@ -119,7 +119,7 @@ const Results = (props) => {
                     <SocialIcon
                       icon={
                         <>
-                          <i class="fab fa-whatsapp"></i>
+                          <i className="fab fa-whatsapp"></i>
                         </>
                       }
                       color="whatsappGreen"
@@ -127,7 +127,7 @@ const Results = (props) => {
                     <SocialIcon
                       icon={
                         <>
-                          <i class="fab fa-facebook"></i>
+                          <i className="fab fa-facebook"></i>
                         </>
                       }
                       color="facebookBlue"
@@ -151,7 +151,7 @@ const Results = (props) => {
                   <SocialBtn
                     icon={
                       <>
-                        <i class="fab fa-twitter"></i>
+                        <i className="fab fa-twitter"></i>
                       </>
                     }
                     color="twitterBlue"
@@ -160,7 +160,7 @@ const Results = (props) => {
                   <SocialBtn
                     icon={
                       <>
-                        <i class="fab fa-whatsapp"></i>
+                        <i className="fab fa-whatsapp"></i>
                       </>
                     }
                     color="whatsappGreen"
@@ -169,7 +169,7 @@ const Results = (props) => {
                   <SocialBtn
                     icon={
                       <>
-                        <i class="fab fa-facebook"></i>
+                        <i className="fab fa-facebook"></i>
                       </>
                     }
                     color="facebookBlue"
