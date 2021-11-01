@@ -4,7 +4,7 @@ const LivePoll = (props) => {
   const [percentage, setPercentage] = useState(0);
   useEffect(() => {
     let per = (props.count / props.total) * 100;
-    setPercentage(per);
+    setPercentage(Math.round(per));
   }, [percentage]);
   return (
     <div>
