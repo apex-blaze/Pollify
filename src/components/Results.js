@@ -18,7 +18,7 @@ const Results = (props) => {
   const uid = user.uid;
   const [pollData, setPollData] = useState([]);
   const [totalVotes, setTotalVotes] = useState(0);
-  const [currentVote, setCurrentVote] = useState(null);
+  const [currentVote, setCurrentVote] = useState("");
   useEffect(() => {
     // console.log(props);
     const docRef = firestore.doc(`/polls/${id}`);
@@ -105,7 +105,7 @@ const Results = (props) => {
                           <i className="fas fa-qrcode"></i>
                         </>
                       }
-                      color={"blue-400"}
+                      color="blue-400"
                     />
 
                     <SocialIcon
@@ -114,7 +114,7 @@ const Results = (props) => {
                           <i className="fab fa-twitter"></i>
                         </>
                       }
-                      color={"twitterBlue"}
+                      color="twitterBlue"
                     />
                     <SocialIcon
                       icon={
@@ -122,7 +122,7 @@ const Results = (props) => {
                           <i class="fab fa-whatsapp"></i>
                         </>
                       }
-                      color={"whatsappGreen"}
+                      color="whatsappGreen"
                     />
                     <SocialIcon
                       icon={
@@ -130,7 +130,7 @@ const Results = (props) => {
                           <i class="fab fa-facebook"></i>
                         </>
                       }
-                      color={"facebookBlue"}
+                      color="facebookBlue"
                     />
                   </div>
                 </div>
@@ -154,7 +154,7 @@ const Results = (props) => {
                         <i class="fab fa-twitter"></i>
                       </>
                     }
-                    color={"twitterBlue"}
+                    color="twitterBlue"
                     platform="twitter"
                   />
                   <SocialBtn
@@ -163,7 +163,7 @@ const Results = (props) => {
                         <i class="fab fa-whatsapp"></i>
                       </>
                     }
-                    color={"whatsappGreen"}
+                    color="whatsappGreen"
                     platform="whatsapp"
                   />
                   <SocialBtn
@@ -172,7 +172,7 @@ const Results = (props) => {
                         <i class="fab fa-facebook"></i>
                       </>
                     }
-                    color={"facebookBlue"}
+                    color="facebookBlue"
                     platform="facebook"
                   />
                 </div>
