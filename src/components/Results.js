@@ -42,9 +42,9 @@ const Results = (props) => {
         setLabel(x);
         setPollData(y);
         if (document.data().votes && document.data().votes[uid]) {
-          let currIndex = document.data().votes[uid] - 1;
-          let currLabel = label[currIndex];
+          const currLabel = label[document.data().votes[uid] - 1];
           setCurrentVote(currLabel);
+          // console.log(currentVote);
         }
       } else {
         props.history.push("/not_found");
@@ -94,7 +94,9 @@ const Results = (props) => {
                 <div className="flex items-end justify-between">
                   <div>
                     <p className="font-semibold text-gray-600 text-sm lg:text-base">{`Total Votes`}</p>
-                    <h3 className="font-bold text-gray-900 text-4xl">{`${totalVotes}`}</h3>
+                    <h3 className="font-bold text-gray-900 text-4xl">
+                      {totalVotes}
+                    </h3>
                   </div>
                   <div className="flex md:hidden">
                     <SocialIcon
