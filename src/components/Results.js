@@ -105,7 +105,7 @@ const Results = (props) => {
                           <i className="fas fa-qrcode"></i>
                         </>
                       }
-                      color="blue-400"
+                      color="#60a5fa"
                     />
 
                     <SocialIcon
@@ -114,7 +114,7 @@ const Results = (props) => {
                           <i className="fab fa-twitter"></i>
                         </>
                       }
-                      color="twitterBlue"
+                      color="#55ACEE"
                     />
                     <SocialIcon
                       icon={
@@ -122,7 +122,7 @@ const Results = (props) => {
                           <i className="fab fa-whatsapp"></i>
                         </>
                       }
-                      color="whatsappGreen"
+                      color="#25D366"
                     />
                     <SocialIcon
                       icon={
@@ -130,7 +130,7 @@ const Results = (props) => {
                           <i className="fab fa-facebook"></i>
                         </>
                       }
-                      color="facebookBlue"
+                      color="#4267B2"
                     />
                   </div>
                 </div>
@@ -154,7 +154,7 @@ const Results = (props) => {
                         <i className="fab fa-twitter"></i>
                       </>
                     }
-                    color="twitterBlue"
+                    color="#55ACEE"
                     platform="twitter"
                   />
                   <SocialBtn
@@ -163,7 +163,7 @@ const Results = (props) => {
                         <i className="fab fa-whatsapp"></i>
                       </>
                     }
-                    color="whatsappGreen"
+                    color="#25D366"
                     platform="whatsapp"
                   />
                   <SocialBtn
@@ -172,7 +172,7 @@ const Results = (props) => {
                         <i className="fab fa-facebook"></i>
                       </>
                     }
-                    color="facebookBlue"
+                    color="#4267B2"
                     platform="facebook"
                   />
                 </div>

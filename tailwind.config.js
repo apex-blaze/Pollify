@@ -1,7 +1,15 @@
 const defaultTheme = require("tailwindcss/defaultTheme");
 
 module.exports = {
-  purge: ["./src/**/*.{js,jsx,ts,tsx}", "./public/index.html"],
+  purge: {
+    enabled: process.env.NODE_ENV === "production",
+    content: ["./src/**/*.{js,jsx,ts,tsx}", "./public/index.html"],
+    options: {
+      safelist: {
+        standard: [/twitterBlue$/, /whatsappGreen$/, /facebookBlue$/],
+      },
+    },
+  },
   darkMode: false, // or 'media' or 'class'
   theme: {
     extend: {
