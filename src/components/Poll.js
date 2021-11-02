@@ -10,7 +10,7 @@ import Loader from "../img/Preloader.gif";
 import "../styles.css";
 import LiveOption from "./LiveOption";
 import { updatePoll } from "../firebase/polls";
-import QRCode from "qrcode.react";
+
 import {
   TwitterIcon,
   TwitterShareButton,
@@ -19,6 +19,7 @@ import {
   FacebookIcon,
   FacebookShareButton,
 } from "react-share";
+import Modal from "./Modal";
 
 const Poll = (props) => {
   const id = props.match.params.id;
@@ -51,6 +52,10 @@ const Poll = (props) => {
     } else {
       toast.error("You have already voted!!");
     }
+  };
+
+  const showModal = () => {
+    setModal(!modal);
   };
 
   useEffect(() => {
@@ -214,7 +219,10 @@ const Poll = (props) => {
                 </span>
               </button>
               <div className="inline-block my-3 md:my-auto mx-5">
-                <button className="bg-transparent bg-purple-bright  font-semibold text-white py-1 px-3 border-2 border-purple-bright hover:border-transparent rounded-md">
+                <button
+                  className="bg-transparent bg-purple-bright  font-semibold text-white py-1 px-3 border-2 border-purple-bright hover:border-transparent rounded-md"
+                  onClick={() => setModal(true)}
+                >
                   QR Code
                   <span className="mx-1">
                     <i className="fas fa-qrcode"></i>
@@ -222,6 +230,8 @@ const Poll = (props) => {
                 </button>
               </div>
             </div>
+
+            {modal ? <Modal setModal={setModal} pollId={poll.id} /> : null}
           </div>
         </div>
       </div>

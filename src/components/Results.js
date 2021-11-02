@@ -7,6 +7,7 @@ import "firebase/compat/auth";
 import LivePoll from "./LivePoll";
 import SocialIcon from "./SocialIcon";
 import SocialBtn from "./SocialBtn";
+import Modal from "./Modal";
 
 const Results = (props) => {
   const id = props.match.params.id;
@@ -16,6 +17,7 @@ const Results = (props) => {
   const [poll, setPoll] = useState(null);
   const [label, setLabel] = useState([]);
   const uid = user.uid;
+  const [modal, setModal] = useState(false);
   const [pollData, setPollData] = useState([]);
   const [totalVotes, setTotalVotes] = useState(0);
   const [currentVote, setCurrentVote] = useState("");
@@ -147,7 +149,10 @@ const Results = (props) => {
                     Share
                   </p>
                   <div className="py-3">
-                    <div className="inline-flex cursor-pointer items-center hover:bg-blue-500 transition-all duration-150 px-2 py-2 bg-blue-400 text-white rounded-md">
+                    <div
+                      className="inline-flex cursor-pointer items-center hover:bg-blue-500 transition-all duration-150 px-2 py-2 bg-blue-400 text-white rounded-md"
+                      onClick={() => setModal(true)}
+                    >
                       <div className="mr-2">
                         <i class="fas fa-qrcode"></i>
                       </div>
@@ -184,6 +189,7 @@ const Results = (props) => {
                     platform="facebook"
                   />
                 </div>
+                {modal ? <Modal setModal={setModal} pollId={poll.id} /> : null}
               </div>
             </div>
           </div>
