@@ -10,6 +10,15 @@ import Loader from "../img/Preloader.gif";
 import "../styles.css";
 import LiveOption from "./LiveOption";
 import { updatePoll } from "../firebase/polls";
+import QRCode from "qrcode.react";
+import {
+  TwitterIcon,
+  TwitterShareButton,
+  WhatsappShareButton,
+  WhatsappIcon,
+  FacebookIcon,
+  FacebookShareButton,
+} from "react-share";
 
 const Poll = (props) => {
   const id = props.match.params.id;
@@ -158,6 +167,61 @@ const Poll = (props) => {
               </p>
               <i className="fas fa-angle-right"></i>
             </Link>
+          </div>
+
+          <div className="">
+            <h3 className="font-fred text-lg">
+              Share this Poll
+              <span className="px-2 text-lg">
+                <i className="far fa-share-square"></i>
+              </span>
+            </h3>
+            <div className="flex justify-center items-center my-4">
+              <TwitterShareButton
+                url={`https://pollify.netlify.app/${poll.id}`}
+                title={`Vote to this poll titled "${poll.title}"  generated using Insta Poll\n`}
+                className="mx-3"
+              >
+                <TwitterIcon size={32} round />
+              </TwitterShareButton>
+              <WhatsappShareButton
+                url={`https://pollify.netlify.app/${poll.id}`}
+                title={`Vote to this poll titled "${poll.title}"  generated using Insta Poll`}
+                separator=":: "
+                className="mx-3"
+              >
+                <WhatsappIcon size={32} round />
+              </WhatsappShareButton>
+              <FacebookShareButton
+                url={`https://pollify.netlify.app/${poll.id}`}
+                title={`Vote to this poll titled "${poll.title}"  generated using Insta Poll`}
+                className="mx-3"
+              >
+                <FacebookIcon size={32} round />
+              </FacebookShareButton>
+            </div>
+            <div className="my-5">
+              <input
+                className="w-60 border-2 border-gray-400 rounded-sm text-lg text-gray-400 px-3"
+                type="text"
+                value={`https://pollify.netlify.app/${poll.id}`}
+                disabled
+              />
+              <button className="bg-transparent bg-purple-bright  font-semibold text-white py-1 px-3 border-2 border-purple-bright hover:border-transparent rounded-md">
+                Copy URL{" "}
+                <span className="mx-1">
+                  <i className="far fa-copy"></i>
+                </span>
+              </button>
+              <div className="inline-block my-3 md:my-auto mx-5">
+                <button className="bg-transparent bg-purple-bright  font-semibold text-white py-1 px-3 border-2 border-purple-bright hover:border-transparent rounded-md">
+                  QR Code
+                  <span className="mx-1">
+                    <i className="fas fa-qrcode"></i>
+                  </span>
+                </button>
+              </div>
+            </div>
           </div>
         </div>
       </div>
