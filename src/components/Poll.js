@@ -25,6 +25,10 @@ const Poll = (props) => {
   const handleSubmit = () => {
     let x = poll;
     // console.log(user);
+    if (expiry) {
+      toast.error("This Poll has expired!!");
+      return;
+    }
     if (!x.votes[uid]) {
       x.options.forEach((option) => {
         if (option.index === index) option.count++;
