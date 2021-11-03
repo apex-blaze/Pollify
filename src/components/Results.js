@@ -5,9 +5,16 @@ import { UserSession } from "../firebase/UserProvider";
 import { firestore } from "../firebase/config";
 import "firebase/compat/auth";
 import LivePoll from "./LivePoll";
-import SocialIcon from "./SocialIcon";
 import SocialBtn from "./SocialBtn";
 import Modal from "./Modal";
+import {
+  TwitterIcon,
+  TwitterShareButton,
+  WhatsappShareButton,
+  WhatsappIcon,
+  FacebookIcon,
+  FacebookShareButton,
+} from "react-share";
 
 const Results = (props) => {
   const id = props.match.params.id;
@@ -109,39 +116,40 @@ const Results = (props) => {
                     </h3>
                   </div>
                   <div className="flex md:hidden">
-                    <SocialIcon
-                      icon={
+                    <div
+                      className={`flex transition-all duration-150 mr-3 rounded-md px-2 text-white items-center -ml-2 w-full self-center py-1`}
+                      style={{ backgroundColor: "#60a5fa" }}
+                      onClick={() => setModal(true)}
+                    >
+                      <a href="#" className={`text-white`}>
                         <>
                           <i className="fas fa-qrcode"></i>
                         </>
-                      }
-                      color="#60a5fa"
-                    />
+                      </a>
+                    </div>
 
-                    <SocialIcon
-                      icon={
-                        <>
-                          <i className="fab fa-twitter"></i>
-                        </>
-                      }
-                      color="#55ACEE"
-                    />
-                    <SocialIcon
-                      icon={
-                        <>
-                          <i className="fab fa-whatsapp"></i>
-                        </>
-                      }
-                      color="#25D366"
-                    />
-                    <SocialIcon
-                      icon={
-                        <>
-                          <i className="fab fa-facebook"></i>
-                        </>
-                      }
-                      color="#4267B2"
-                    />
+                    <TwitterShareButton
+                      url={`https://pollify.netlify.app/${poll.id}`}
+                      title={`Vote to this poll titled "${poll.title}"  generated using Insta Poll\n`}
+                      className="mx-3"
+                    >
+                      <TwitterIcon size={32} round />
+                    </TwitterShareButton>
+                    <WhatsappShareButton
+                      url={`https://pollify.netlify.app/${poll.id}`}
+                      title={`Vote to this poll titled "${poll.title}"  generated using Insta Poll`}
+                      separator=":: "
+                      className="mx-3"
+                    >
+                      <WhatsappIcon size={32} round />
+                    </WhatsappShareButton>
+                    <FacebookShareButton
+                      url={`https://pollify.netlify.app/${poll.id}`}
+                      title={`Vote to this poll titled "${poll.title}"  generated using Insta Poll`}
+                      className="mx-3"
+                    >
+                      <FacebookIcon size={32} round />
+                    </FacebookShareButton>
                   </div>
                 </div>
                 <div className="mt-5 md:block hidden text-left">
