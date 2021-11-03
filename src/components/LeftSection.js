@@ -30,7 +30,7 @@ const LeftSection = (props) => {
       <div className="flex justify-center py-5 mb-4">
         <button
           onClick={handleLogin}
-          className="py-2 px-2 md:px-5 md:py-3 font-medium text-white bg-purple-bright rounded hover:bg-purple-moderate transition duration-300"
+          className="py-3 px-10 text-md font-medium text-white bg-purple-bright rounded hover:bg-purple-moderate transition duration-300 md:text-lg md:px-12  lg:text-xl lg:px-16"
         >
           {" "}
           <Fragment>
