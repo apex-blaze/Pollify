@@ -15,6 +15,7 @@ import {
   FacebookIcon,
   FacebookShareButton,
 } from "react-share";
+import Loader from "../img/Preloader.gif";
 
 const Results = (props) => {
   const id = props.match.params.id;
@@ -28,6 +29,11 @@ const Results = (props) => {
   const [pollData, setPollData] = useState([]);
   const [totalVotes, setTotalVotes] = useState(0);
   const [currentVote, setCurrentVote] = useState("");
+
+  const handleSubmit = () => {
+    props.history.push(`/${id}`);
+  };
+
   useEffect(() => {
     // console.log(props);
     const docRef = firestore.doc(`/polls/${id}`);
@@ -61,6 +67,13 @@ const Results = (props) => {
     });
     return () => unsubscribe();
   }, []);
+
+  if (!poll)
+    return (
+      <div className="w-full flex h-screen items-center justify-center z-50">
+        <img src={Loader} />
+      </div>
+    );
   return (
     <div className="lg:mx-20 flex flex-col min-h-screen">
       <Header />
@@ -88,7 +101,7 @@ const Results = (props) => {
               </div>
             </div>
 
-            <div className="flex flex-col w-full md:w-1/3 fixed bottom-0 left-0 md:static md:ml-16 rounded-md self-start mr-6">
+            <div className="flex flex-col w-full md:w-1/3 fixed bottom-0 left-0 md:static md:ml-16 rounded-md self-start mr-6 lg:w-3/12">
               {currentVote ? (
                 <p className="bg-blue-200 text-blue-700 mt-5 md:mb-5 md:mt-0 text-sm lg:text-base text-center py-2 rounded hidden px-4 md:block">
                   {"You voted "}{" "}
@@ -96,9 +109,14 @@ const Results = (props) => {
                   {" on this poll"}
                 </p>
               ) : (
-                ``
+                <button
+                  className="focus:outline-none py-4 font-semibold focus:shadow text-xl w-full md:mb-4 md:w-auto bg-purple-bright text-white px-16 transition-all duration-300 shadow-lg hover:shadow-xl to-purple-600 rounded-lg hidden md:block "
+                  onClick={handleSubmit}
+                >
+                  Submit vote
+                </button>
               )}
-              <div className="w-full bg-purple-light flex flex-col-reverse md:flex-col border-t border-gray-300 md:border-t-0 rounded-md self-start px-5 py-6">
+              <div className="w-full bg-purple-light flex flex-col-reverse md:flex-col border-t border-gray-300 md:border-t-0 rounded-md self-start px-5 py-6 ">
                 {currentVote ? (
                   <p className="bg-blue-200 text-blue-700 mt-5 md:mb-5 md:mt-0 text-sm lg:text-base text-center py-2 rounded md:hidden">
                     {"You voted "}{" "}
@@ -106,11 +124,16 @@ const Results = (props) => {
                     {" on this poll"}
                   </p>
                 ) : (
-                  ``
+                  <button
+                    className="focus:outline-none py-4 font-semibold focus:shadow text-xl w-full mt-5 md:mb-0 md:w-auto bg-purple-bright text-white px-16 transition-all duration-300 shadow-lg hover:shadow-xl to-purple-600 rounded-lg md:hidden"
+                    onClick={handleSubmit}
+                  >
+                    Submit vote
+                  </button>
                 )}
                 <div className="flex items-end justify-between">
                   <div>
-                    <p className="font-semibold text-gray-600 text-sm lg:text-base">{`Total Votes`}</p>
+                    <p className="font-bold text-gray-600 text-sm lg:text-base">{`Total Votes`}</p>
                     <h3 className="font-bold text-gray-900 text-4xl">
                       {totalVotes}
                     </h3>

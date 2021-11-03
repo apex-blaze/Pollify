@@ -54,8 +54,9 @@ const Poll = (props) => {
     }
   };
 
-  const showModal = () => {
-    setModal(!modal);
+  const handleURL = () => {
+    navigator.clipboard.writeText("https://pollify.netlify.app/" + poll.id);
+    toast.success("URL copied to clipboard!!");
   };
 
   useEffect(() => {
@@ -212,7 +213,10 @@ const Poll = (props) => {
                 value={`https://pollify.netlify.app/${poll.id}`}
                 disabled
               />
-              <button className="bg-transparent bg-purple-bright  font-semibold text-white py-1 px-3 border-2 border-purple-bright hover:border-transparent rounded-md">
+              <button
+                className="bg-transparent bg-purple-bright  font-semibold text-white py-1 px-3 border-2 border-purple-bright hover:border-transparent rounded-md"
+                onClick={handleURL}
+              >
                 Copy URL{" "}
                 <span className="mx-1">
                   <i className="far fa-copy"></i>
