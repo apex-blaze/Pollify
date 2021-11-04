@@ -15,9 +15,15 @@ With <b>Pollify</b> generate polls instantly and get real-time updates quickly!!
 - Share the poll on any social handle in just a click 🖱
 
  ## Screenshots
- ### Home Page
+ ### Landing Page
+ ![Landing page](https://raw.githubusercontent.com/apex-blaze/Pollify/main/images/Screenshot%20(44).png)
 
 ### Poll Page
+![Poll page](https://raw.githubusercontent.com/apex-blaze/Pollify/main/images/Screenshot%20(45).png)
+
+
+### Result Page
+![Result page](https://raw.githubusercontent.com/apex-blaze/Pollify/main/images/Screenshot%20(46).png)
 
 ## Tech Stack 💻
  - [React.js (Frontend)](https://reactjs.org/)
