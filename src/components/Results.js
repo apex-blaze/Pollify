@@ -155,14 +155,14 @@ const Results = (props) => {
 
                     <TwitterShareButton
                       url={`https://pollify.netlify.app/${poll.id}`}
-                      title={`Vote to this poll titled "${poll.title}"  generated using Insta Poll\n`}
+                      title={`Vote to this poll titled "${poll.title}"  generated using Pollify\n`}
                       className="mx-3"
                     >
                       <TwitterIcon size={32} round />
                     </TwitterShareButton>
                     <WhatsappShareButton
                       url={`https://pollify.netlify.app/${poll.id}`}
-                      title={`Vote to this poll titled "${poll.title}"  generated using Insta Poll`}
+                      title={`Vote to this poll titled "${poll.title}"  generated using Pollify`}
                       separator=":: "
                       className="mx-3"
                     >
@@ -170,7 +170,7 @@ const Results = (props) => {
                     </WhatsappShareButton>
                     <FacebookShareButton
                       url={`https://pollify.netlify.app/${poll.id}`}
-                      title={`Vote to this poll titled "${poll.title}"  generated using Insta Poll`}
+                      title={`Vote to this poll titled "${poll.title}"  generated using Pollify`}
                       className="mx-3"
                     >
                       <FacebookIcon size={32} round />
