@@ -41,7 +41,10 @@ const Poll = (props) => {
     }
     if (!x.votes[uid]) {
       x.options.forEach((option) => {
-        if (option.index === index) option.count++;
+        if (option.index === index) {
+          option.count++;
+          option.voters.push(user.email);
+        }
       });
       x.votes[uid] = index;
       updatePoll(x);

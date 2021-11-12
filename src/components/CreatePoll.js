@@ -17,11 +17,13 @@ const CreatePoll = (props) => {
       index: 1,
       title: "",
       count: 0,
+      voters: [],
     },
     {
       index: 2,
       title: "",
       count: 0,
+      voters: [],
     },
   ]);
   const [check, setCheck] = useState(false);
@@ -46,6 +48,7 @@ const CreatePoll = (props) => {
       index: options.length + 1,
       title: "",
       count: 0,
+      voters: [],
     };
     if (options.length === 5) {
       toast.warning("Maximum 5 options are allowed!!");
@@ -107,7 +110,11 @@ const CreatePoll = (props) => {
           }
           poll.id = shortid.generate();
           poll.title = title;
-          poll.creator = user.displayName;
+          poll.creator = {
+            name: user.displayName,
+            uid: user.uid,
+            email: user.email,
+          };
           poll.votes = {};
           poll.options = options;
           createPoll(poll);

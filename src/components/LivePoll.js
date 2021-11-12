@@ -1,7 +1,10 @@
 import React, { useEffect, useState } from "react";
+import { UserSession } from "../firebase/UserProvider";
 
 const LivePoll = (props) => {
+  const { user } = UserSession();
   const [percentage, setPercentage] = useState(0);
+  const [hide, setHide] = useState(true);
   useEffect(() => {
     let per = (props.count / props.total) * 100;
     if (!per) {
@@ -32,6 +35,22 @@ const LivePoll = (props) => {
           </div>
           <p className="mt-3 text-purple-bright text-xs lg:text-base text-left">
             {"Votes: " + props.count}
+            {user.uid === props.creator.uid ? (
+              <>
+                <span
+                  className="text-purple-bright mx-3"
+                  onClick={() => setHide(!hide)}
+                >
+                  <i className="fas fa-chevron-circle-down "></i>
+                </span>
+                <div className={`${hide ? "hidden" : "block"} `}>
+                  Voters :{" "}
+                  <span className="text-gray-500">
+                    {props.voters?.join(", ")}
+                  </span>
+                </div>
+              </>
+            ) : null}
           </p>
         </div>
       </div>

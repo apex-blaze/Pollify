@@ -93,6 +93,8 @@ const Results = (props) => {
                       title={option.title}
                       count={option.count}
                       total={totalVotes}
+                      voters={option.voters}
+                      creator={poll.creator}
                     />
                   ))
                 ) : (
