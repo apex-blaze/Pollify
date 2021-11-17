@@ -197,7 +197,14 @@ const Results = (props) => {
                   <SocialBtn
                     icon={
                       <>
-                        <i className="fab fa-twitter"></i>
+                        <TwitterShareButton
+                          url={`https://pollify.netlify.app/${poll.id}`}
+                          title={`Vote to this poll titled "${poll.title}"  generated using Pollify\n`}
+                          className="mx-3 flex justify-center items-center"
+                        >
+                          <TwitterIcon size={22} round />
+                          <span className="mx-2">Share on Twitter</span>
+                        </TwitterShareButton>
                       </>
                     }
                     color="#55ACEE"
@@ -206,7 +213,15 @@ const Results = (props) => {
                   <SocialBtn
                     icon={
                       <>
-                        <i className="fab fa-whatsapp"></i>
+                        <WhatsappShareButton
+                          url={`https://pollify.netlify.app/${poll.id}`}
+                          title={`Vote to this poll titled "${poll.title}"  generated using Pollify`}
+                          separator=":: "
+                          className="mx-3 flex justify-center items-center"
+                        >
+                          <WhatsappIcon size={22} round />
+                          <span className="mx-2">Share on WhatsApp</span>
+                        </WhatsappShareButton>
                       </>
                     }
                     color="#25D366"
@@ -215,7 +230,14 @@ const Results = (props) => {
                   <SocialBtn
                     icon={
                       <>
-                        <i className="fab fa-facebook"></i>
+                        <FacebookShareButton
+                          url={`https://pollify.netlify.app/${poll.id}`}
+                          title={`Vote to this poll titled "${poll.title}"  generated using Pollify`}
+                          className="mx-3 flex justify-center items-center"
+                        >
+                          <FacebookIcon size={22} round />
+                          <span className="mx-2">Share on Facebook</span>
+                        </FacebookShareButton>
                       </>
                     }
                     color="#4267B2"
